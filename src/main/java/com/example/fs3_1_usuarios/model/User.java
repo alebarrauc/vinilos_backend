@@ -1,4 +1,5 @@
 package com.example.fs3_1_usuarios.model;
+
 import org.springframework.hateoas.RepresentationModel;
 
 import jakarta.persistence.Column;
@@ -10,40 +11,64 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "users") // Cambiado a "users"
 public class User extends RepresentationModel<User> {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_seq")
-    @SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq", allocationSize = 1)
-    @Column(name = "id_us")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")
+    @SequenceGenerator(name = "users_seq", sequenceName = "users_seq", allocationSize = 1)
+    @Column(name = "id")
     private Long id;
-    @Column(name = "nombre")
-    private String nombre;
-    @Column(name = "rol")
-    private String rol;
-    
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "role")
+    private String role;
+
+    @Column(name = "username")
+    private String username;
+
     // Getters and Setters
     public Long getId() {
         return id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getEmail() {
+        return email;
     }
 
-    public String getRol() {
-        return rol;
+    public String getPassword() {
+        return password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
