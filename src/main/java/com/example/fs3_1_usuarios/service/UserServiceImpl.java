@@ -40,7 +40,6 @@ public class UserServiceImpl implements UserService {
     public User updateUser(Long id, User user) {
         return userRepository.findById(id)
                 .map(existingUser -> {
-                    // Eliminar setNombre ya que no existe en la clase User
                     existingUser.setRole(user.getRole());
                     existingUser.setEmail(user.getEmail());
                     existingUser.setPassword(user.getPassword());
@@ -56,5 +55,11 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("User not found with id: " + id);
         }
         userRepository.deleteById(id);
+    }
+
+    // Nuevo método para buscar un usuario por username
+    @Override
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }

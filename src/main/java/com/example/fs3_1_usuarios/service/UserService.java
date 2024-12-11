@@ -7,7 +7,10 @@ import java.util.Optional;
 public interface UserService {
     List<User> getAllUsers();
     Optional<User> getUserById(Long id);
-    User createUser (User user);
+    User createUser(User user);
     User updateUser(Long id, User user);
     void deleteUser(Long id);
+
+    // Nuevo método para buscar un usuario por username
+    Optional<User> findByUsername(String username);
 }
